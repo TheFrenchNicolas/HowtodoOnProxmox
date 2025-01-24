@@ -1,4 +1,4 @@
-[French](#-French)
+[French](#-French-)
 
 # English ![US@2x](https://github.com/user-attachments/assets/db74e792-9662-4a3a-bd5c-770a5e5286d5)
 

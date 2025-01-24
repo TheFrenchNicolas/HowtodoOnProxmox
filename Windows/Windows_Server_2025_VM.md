@@ -39,7 +39,7 @@
 
 --- 
 
-## Optional Steps
+## After Installation Steps
 
 - [ ] Open File Explorer > Navigate into the VirtIO Disc > Right click virtio-win-guest-tools.exe > Run as administrator
 - [ ] Step through the installer, accepting all the defaults
@@ -49,6 +49,7 @@
 - [ ] Double click the remaining CD/DVD drive > Select Do not use any media > Click OK
 - [ ] Click Start at the top right of the screen restart the VM
 - [ ] Click console in the left sub-navigation menu
+- [ ] Do Not Forget to do the Windows Update in the Settings
 
 
 ---

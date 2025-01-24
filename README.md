@@ -1,6 +1,7 @@
 [French](#-French)
 
-# English 🇺🇸 🇺🇸
+# English ![US@2x](https://github.com/user-attachments/assets/db74e792-9662-4a3a-bd5c-770a5e5286d5)
+
 
 # Proxmox Project - Installation, Configuration, and Maintenance
 
@@ -102,7 +103,8 @@ This project is licensed under the [MIT License](LICENSE). You are free to use, 
 
 💻 **Happy learning and virtualization!**
 
-# French 🇫🇷 🇫🇷 
+# French ![FR@2x](https://github.com/user-attachments/assets/07b49c7c-3f77-48e7-b754-ae87b3798fd9)
+
 
 # Projet Proxmox - Installation, Configuration et Maintenance
 

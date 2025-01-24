@@ -1,6 +1,6 @@
 [French](#-French)
 
-# English :us: :us:
+# English 🇺🇸 🇺🇸
 
 # Proxmox Project - Installation, Configuration, and Maintenance
 
@@ -102,7 +102,7 @@ This project is licensed under the [MIT License](LICENSE). You are free to use, 
 
 💻 **Happy learning and virtualization!**
 
-# French :fr: :fr: 
+# French 🇫🇷 🇫🇷 
 
 # Projet Proxmox - Installation, Configuration et Maintenance
 

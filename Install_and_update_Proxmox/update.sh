@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# Copyright (c) 2025
+# Author: Nicolas (TheFrenchNicolas)
+# License: MIT | 
+
+
 # Définition du fichier de log
 LOGFILE="/var/log/proxmox_update.log"
 

@@ -19,7 +19,10 @@ echo "[$(date)] Nettoyage terminé" >> $LOGFILE
 
 ### Téléchargement du scipt
 1. Se connecter via le Shell de l'interface Web de votre Proxmox
-2. Pour 
+2. Pour télécharger le script:
+ ```bash
+ mkdir -p ~/script && wget -O ~/script/update.sh https://raw.githubusercontent.com/TheFrenchNicolas/HowtodoOnProxmox/refs/heads/main/Install_and_update_Proxmox/update.sh
+```
 
 
 
@@ -30,7 +33,7 @@ echo "[$(date)] Nettoyage terminé" >> $LOGFILE
    ```
 2. Ajouter cette ligne pour exécuter le script chaque jour à 3h du matin :  
    ```bash
-   0 3 * * * /update.sh
+   0 3 * * * ~/script/update.sh
    ```
 3. Sauvegarder et quitter.
 

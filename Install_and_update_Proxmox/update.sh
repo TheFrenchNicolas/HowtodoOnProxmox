@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Définition du fichier de log
 LOGFILE="/var/log/proxmox_update.log"

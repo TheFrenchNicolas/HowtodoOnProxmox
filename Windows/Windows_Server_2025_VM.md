@@ -21,9 +21,9 @@
 3. Dans l’onglet **OS** :
    - Sélectionner "Use ISO image" et choisir l’ISO de Windows 2025.
    - Choisir **Microsoft Windows** comme type de système.
-4. Dans **System** :
+4. Dans **Systeme** :
    - Activer **Q35** et **UEFI (OVMF)** si nécessaire.
-   - Ajouter un TPM si Windows 2025 l'exige.
+   - Ajouter un TPM, Windows 2025 l'exige.
 5. Dans **Disque** :
    - Sélectionner un stockage.
    - Définir la taille du disque (ex. 50 Go).
@@ -42,19 +42,20 @@
 2. Aller dans **Console** pour suivre l’installation.
 3. Lancer l’installation de Windows 2025 et choisir **Personnalisée**.
 4. À l’étape de sélection du disque, cliquer sur **Charger un pilote**.
-5. Sélectionner le lecteur VirtIO et installer les drivers nécessaires.
+5. Sélectionner le lecteur CD VirtIO et installer le driver nécessaire pour l'installation sur le disque:
+    - vioscsi\2k25\amd64
 6. Poursuivre l’installation de Windows normalement.
 7. Une fois installé, retirer l’ISO Windows et redémarrer.
 
-## 4. Installation des Drivers VirtIO
+## 4. Installation des autres Drivers VirtIO
 1. Aller dans **Ce PC** > **Lecteur VirtIO**.
-2. Exécuter `virtio-win-guest-tools.exe` pour installer tous les drivers.
+2. Exécuter `virtio-win-guest-tools.exe` pour installer tous les drivers nécessaires.
 3. Redémarrer la VM après l’installation.
 
 ## 5. Configuration Post-Installation
 1. Mettre à jour Windows via Windows Update.
-2. Activer le bureau à distance si nécessaire.
-3. Installer les logiciels et outils requis.
+2. Activer le bureau à distance et le serveur SSH si nécessaire.
+3. Installer les logiciels et outils souhaités.
 
 ## 6. Finalisation
 - Démonter l’ISO depuis l’onglet **Hardware** > **CD/DVD Drive** > **Do not use any media**.

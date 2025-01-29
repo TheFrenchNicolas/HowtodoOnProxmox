@@ -2,7 +2,7 @@
 
 # Copyright (c) 2025
 # Author: Nicolas (TheFrenchNicolas)
-# License: MIT | 
+# License: MIT | https://github.com/TheFrenchNicolas/HowtodoOnProxmox/raw/main/LICENSE
 
 
 # Définition du fichier de log

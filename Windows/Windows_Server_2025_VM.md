@@ -1,59 +1,66 @@
-## Running a Windows Server 2025 VM in Proxmox VE
 
-- [ ] Log into the Proxmox web UI
-- [ ] Select a storage from the left navigation pane to download the .iso to
-- [ ] Select ISO Images in the left sub-navigation pane
-- [ ] If running Proxmox 6, download the Server 2025 iso Download and the VirtIO driver iso Download and upload them both to the Proxmox ISO image library
-- [ ] If on Proxmox 7, click Download from URL and paste the download URLs from above > Click Query URL > Click Download
-- [ ] Check the presence of the 2 ISOs in Proxmox storage  > use the link below
-- [ ] Right click the Proxmox node name > Create VM
-- [ ] Give the VM a unique ID and Name > Next
-- [ ] Set the Type to Microsoft Windows and Version to 11/2022 and select the Server 2025 iso, Check the box for VirtIO drivers > select the VirtIO driver iso
-- [ ] On the System tab, set the BIOS to SeaBIOS, Choose to enable/disable TPM and set the TPM Storage device, Check the Qemu Agent box and set the SCSI Controller to VirtIO SCSI > Next
-- [ ] On the Disks tab, set the Storage device and Disk size to at least 30GB, Bus/Device to VirtIO Block and Cache to Write back > Next
-- [ ] On the CPU tab, set Cores to 2 or more and the Type to host > Next
-- [ ] On the Memory tab, set the Memory to 8192 or more and minimum Memory to 4096 or more > Next
-- [ ] Leave the defaults on the Network tab | or use the good one (in my case i've got 2 virtual port (vmbr0 and vmbr1)) > Next
-- [ ] Verify the summary and click Finish
-- [ ] Select the Server 2025 VM > Hardware
-- [ ] Click the Add dropdown > CD/DVD Drive
-- [ ] Double click the new CD/DVD Drive > Select Use CD/DVD disc image file (iso) > Select the storage where the VirtIO driver iso was - [ ] downloaded > Select the virtio .iso file > Click OK
-- [ ] Right click the Server 2025 VM in the left navigation pane > Start
-- [ ] Click console in the left sub-navigation menu
-- [ ] If prompted, press a key to boot to the CD/DVD drive
-- [ ] Set the Language settings > Click Next
-- [ ] Set the Keyboard settings > Click Next
-- [ ] Click the I agree everything will be deleted checkbox > Click Next
-- [ ] Enter a product key or select I don't have a product key > Click Next
-- [ ] Select the desired edition > Click Next
-- [ ] On the License Terms screen click Accept
-- [ ] Click Load Driver > Browse > Expand the VirtIO driver disc > Navigate to amd64\2k22 > Click OK > Next
-- [ ] With the Unallocated Space selected, click Next
-- [ ] Click Install
-- [ ] Wait for Windows to copy files, the VM will reboot several times
-- [ ] If prompted, enter a Product Key or click Do this later
-- [ ] Enter and confirm a password for the Administrator account > Click Finish
-- [ ] Select the Keyboard icon > Ctrl-Alt-Del
-- [ ] Input the administrator password and login
-- [ ] Welcome to Windows Server 2025
+# Guide d'Installation d'une VM Windows 2025 sous Proxmox
 
---- 
+## Prérequis
+- Un serveur Proxmox VE fonctionnel.
+- Une image ISO de Windows 2025 (téléchargeable depuis le site officiel de [Microsoft](https://www.microsoft.com/fr-fr/evalcenter/evaluate-windows-server-2025)).
+- Une image ISO des drivers VirtIO (téléchargeable depuis [ici](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/)).
+- Un stockage suffisant pour la VM.
+- Un accès à l'interface web de Proxmox.
+- Documentation officielle Proxmox : [Proxmox Wiki](https://pve.proxmox.com/wiki/Main_Page).
 
-## After Installation Steps
+## 1. Téléchargement et Ajout des ISOs
+1. Accéder à l’interface web de Proxmox : `https://<adresse-IP>:8006`.
+2. Aller dans **Datacenter** > **Node** > **Local (pve)** > **ISO Images**.
+3. Cliquer sur **Upload** et sélectionner l’ISO de Windows 2025.
+4. Répéter l'opération pour l’ISO des drivers VirtIO.
 
-- [ ] Open File Explorer > Navigate into the VirtIO Disc > Right click virtio-win-guest-tools.exe > Run as administrator
-- [ ] Step through the installer, accepting all the defaults
-- [ ] After the installation completes shutdown the VM
-- [ ] Back in the Proxmox web UI, select Hardware from the left sub-navigation menu
-- [ ] Select the CD/DVD drive with the VirtIO iso attached > Remove > Yes
-- [ ] Double click the remaining CD/DVD drive > Select Do not use any media > Click OK
-- [ ] Click Start at the top right of the screen restart the VM
-- [ ] Click console in the left sub-navigation menu
-- [ ] Do Not Forget to do the Windows Update in the Settings
+## 2. Création de la Machine Virtuelle
+1. Aller dans **Datacenter** > **Node** > **Create VM**.
+2. Renseigner un **Nom** pour la VM.
+3. Dans l’onglet **OS** :
+   - Sélectionner "Use ISO image" et choisir l’ISO de Windows 2025.
+   - Choisir **Microsoft Windows** comme type de système.
+4. Dans **System** :
+   - Activer **Q35** et **UEFI (OVMF)** si nécessaire.
+   - Ajouter un TPM si Windows 2025 l'exige.
+5. Dans **Disque** :
+   - Sélectionner un stockage.
+   - Définir la taille du disque (ex. 50 Go).
+   - Choisir **VirtIO SCSI** comme contrôleur disque.
+6. Dans **CPU** :
+   - Choisir le nombre de cœurs (ex. 4).
+7. Dans **Mémoire** :
+   - Définir la RAM (ex. 8192 Mo pour 8 Go).
+8. Dans **Réseau** :
+   - Choisir **VirtIO (paravirtualisé)**.
+9. Ajouter un second CD/DVD drive et sélectionner l’ISO des drivers VirtIO.
+10. Valider la création de la VM.
 
+## 3. Installation de Windows 2025
+1. Sélectionner la VM et cliquer sur **Start**.
+2. Aller dans **Console** pour suivre l’installation.
+3. Lancer l’installation de Windows 2025 et choisir **Personnalisée**.
+4. À l’étape de sélection du disque, cliquer sur **Charger un pilote**.
+5. Sélectionner le lecteur VirtIO et installer les drivers nécessaires.
+6. Poursuivre l’installation de Windows normalement.
+7. Une fois installé, retirer l’ISO Windows et redémarrer.
 
----
+## 4. Installation des Drivers VirtIO
+1. Aller dans **Ce PC** > **Lecteur VirtIO**.
+2. Exécuter `virtio-win-guest-tools.exe` pour installer tous les drivers.
+3. Redémarrer la VM après l’installation.
 
-## Useful link
-- [ ] Windows 2025 fr iso : https://go.microsoft.com/fwlink/?linkid=2273506 or https://www.microsoft.com/fr-fr/evalcenter/evaluate-windows-server-2025
-- [ ] VirtIo Win iso : https://pve.proxmox.com/wiki/Windows_VirtIO_Drivers or https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.iso 
+## 5. Configuration Post-Installation
+1. Mettre à jour Windows via Windows Update.
+2. Activer le bureau à distance si nécessaire.
+3. Installer les logiciels et outils requis.
+
+## 6. Finalisation
+- Démonter l’ISO depuis l’onglet **Hardware** > **CD/DVD Drive** > **Do not use any media**.
+- Redémarrer la VM pour appliquer toutes les modifications.
+- La VM Windows 2025 est maintenant prête à l'emploi !
+
+## 7. Liens Utiles
+- Documentation officielle Proxmox : [Proxmox Wiki](https://pve.proxmox.com/wiki/Main_Page)
+- Téléchargement VirtIO Drivers : [VirtIO Drivers](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/)

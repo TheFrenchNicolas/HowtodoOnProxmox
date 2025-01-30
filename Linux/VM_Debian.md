@@ -17,7 +17,7 @@
 3. Dans l’onglet **OS** :
    - Sélectionner "Use ISO image" et choisir l’ISO Debian précédemment importé.
    - Choisir **Linux 6.x - 5.x - 4.x (kernel)** comme type de système.
-4. Dans **System** :
+4. Dans **Systeme** :
    - Laisser les options par défaut.
 5. Dans **Disque** :
    - Sélectionner un stockage.
